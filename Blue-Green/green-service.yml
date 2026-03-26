@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: online-shop-service
+  namespace: blue-green-ns
+spec:
+  selector:
+    app: online-shop
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 8080
+  type: ClusterIP
+  

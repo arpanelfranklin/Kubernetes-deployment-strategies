@@ -1,0 +1,28 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: online-shop-deployment
+  namespace: blue-green-ns
+  labels:
+    app: online-shop
+spec:
+  replicas: 4
+  selectors:
+    matchlabels: 
+      app: online-shop
+  templates:
+    metadata: 
+      labels:
+        app: online-shop
+  spec:
+    containers:
+      - name: online-shop
+        image: amitabhdevops/online_shop
+        resources:
+          request:
+            cpu: "100M"
+            memory: "256Mi"
+          limits:
+            cpu: "200m"
+            memory: "512Mi"
+  
